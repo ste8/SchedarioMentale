@@ -6,7 +6,16 @@
         {
             var range = new SessionGenerationRange(fromNumber, toNumber);
             ValidateRange(range);
-            throw new Exception();
+
+            var cards = new List<Card>();
+
+            for (int i = fromNumber; i <= toNumber; i++) {
+                var card = new Card(i);
+                cards.Add(card);
+            }
+
+            var output = new SessionGeneratorOutput(cards.ToArray());
+            return output;
         }
 
         private void ValidateRange(SessionGenerationRange range)
@@ -36,9 +45,11 @@
 
     public class SessionGeneratorOutput
     {
+        public Card[] Cards { get; }
+
         public SessionGeneratorOutput(Card[] cards)
         {
-            
+            Cards = cards;
         }
     }
 
