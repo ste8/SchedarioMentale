@@ -18,8 +18,15 @@
         public void StartMatch(int fromNumber, int toNumber)
         {
             var session = SessionGenerator.Generate(fromNumber, toNumber);
-            _currentMatch = new Match(session, _playfieldUi);
+             _currentMatch = new Match(session, _playfieldUi);
             _currentMatch.Start();
+        }
+
+        public bool IsMatchRunning => _currentMatch?.IsMatchRunning ?? false;
+
+        public void GoToNextCard()
+        {
+            _currentMatch.GoToNextCard();
         }
     }
 }

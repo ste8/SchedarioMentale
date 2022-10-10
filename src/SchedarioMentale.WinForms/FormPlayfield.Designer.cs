@@ -46,7 +46,7 @@
             // 
             // PlayButton
             // 
-            this.PlayButton.Location = new System.Drawing.Point(127, 298);
+            this.PlayButton.Location = new System.Drawing.Point(184, 298);
             this.PlayButton.Name = "PlayButton";
             this.PlayButton.Size = new System.Drawing.Size(109, 38);
             this.PlayButton.TabIndex = 1;
@@ -56,22 +56,25 @@
             // 
             // InstructionsForNextNumberLabel
             // 
-            this.InstructionsForNextNumberLabel.Location = new System.Drawing.Point(256, 298);
+            this.InstructionsForNextNumberLabel.Location = new System.Drawing.Point(67, 298);
             this.InstructionsForNextNumberLabel.Name = "InstructionsForNextNumberLabel";
-            this.InstructionsForNextNumberLabel.Size = new System.Drawing.Size(231, 38);
+            this.InstructionsForNextNumberLabel.Size = new System.Drawing.Size(341, 38);
             this.InstructionsForNextNumberLabel.TabIndex = 2;
-            this.InstructionsForNextNumberLabel.Text = "Premi SPAZIO per andare al prossimo numero";
+            this.InstructionsForNextNumberLabel.Text = "❱❱ Premi SPAZIO per andare al prossimo numero";
+            this.InstructionsForNextNumberLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // FormPlayfield
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.InstructionsForNextNumberLabel);
             this.Controls.Add(this.PlayButton);
             this.Controls.Add(this.NumberLabel);
+            this.Controls.Add(this.InstructionsForNextNumberLabel);
+            this.KeyPreview = true;
             this.Name = "FormPlayfield";
             this.Text = "Form1";
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FormPlayfield_KeyUp);
             this.ResumeLayout(false);
 
         }

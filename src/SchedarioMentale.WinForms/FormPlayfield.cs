@@ -21,7 +21,7 @@ namespace SchedarioMentale.WinForms
         private void PlayButton_Click(object sender, EventArgs e)
         {
             int fromNumber = 1;
-            int toNumber = 10;
+            int toNumber = 5;
             _playfield.StartMatch(fromNumber, toNumber);
         }
 
@@ -39,6 +39,16 @@ namespace SchedarioMentale.WinForms
             NumberLabel.Visible = true;
             PlayButton.Visible = false;
             InstructionsForNextNumberLabel.Visible = true;
+        }
+
+        private void FormPlayfield_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Space) {
+                if (_playfield.IsMatchRunning) {
+                    _playfield.GoToNextCard();
+                    e.Handled = true;
+                }
+            }
         }
     }
 }

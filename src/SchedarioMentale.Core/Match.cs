@@ -16,6 +16,7 @@
         {
             _currentCardIndex = 0;
             ShowCard();
+            IsMatchRunning = true;
         }
 
         private void ShowCard()
@@ -28,5 +29,28 @@
         {
             return _session.Cards[_currentCardIndex];
         }
+
+        public bool IsMatchRunning { get; private set; }
+
+        public void GoToNextCard()
+        {
+            _currentCardIndex++;
+            if (AreCardsFinished()) {
+                EndMatch();
+                return;
+            }
+            ShowCard();
+        }
+
+        private bool AreCardsFinished()
+        {
+            return _currentCardIndex >= _session.Cards.Length;
+        }
+
+        private void EndMatch()
+        {
+            IsMatchRunning = false;
+        }
+
     }
 }
