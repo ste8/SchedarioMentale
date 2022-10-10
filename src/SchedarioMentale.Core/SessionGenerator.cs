@@ -2,7 +2,7 @@
 {
     public class SessionGenerator
     {
-        public SessionGeneratorOutput Generate(int fromNumber, int toNumber)
+        public static Session Generate(int fromNumber, int toNumber)
         {
             var range = new SessionGenerationRange(fromNumber, toNumber);
             ValidateRange(range);
@@ -17,18 +17,18 @@
                 cards.Add(card);
             }
 
-            var output = new SessionGeneratorOutput(cards.ToArray());
+            var output = new Session(cards.ToArray());
             return output;
         }
 
-        private void ValidateRange(SessionGenerationRange range)
+        private static void ValidateRange(SessionGenerationRange range)
         {
             if (range.FromNumber is < 1 or > 100) ThrowInvalidRange(range);
             if (range.ToNumber is < 1 or > 100) ThrowInvalidRange(range);
             if (range.FromNumber > range.ToNumber) ThrowInvalidRange(range);
         }
 
-        private void ThrowInvalidRange(SessionGenerationRange range)
+        private static void ThrowInvalidRange(SessionGenerationRange range)
         {
             throw new InvalidRangeForSessionGeneration(range);
         }
@@ -43,16 +43,6 @@
         {
             FromNumber = fromNumber;
             ToNumber = toNumber;
-        }
-    }
-
-    public class SessionGeneratorOutput
-    {
-        public Card[] Cards { get; }
-
-        public SessionGeneratorOutput(Card[] cards)
-        {
-            Cards = cards;
         }
     }
 

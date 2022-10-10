@@ -41,7 +41,7 @@ namespace SchedarioMentale.Tests.Unit.Core
             Assert.AreNotEqual(sortedNumbers, actualNumbers);
         }
 
-        private static void AssertAllNumbersAreGenerated(int fromNumber, int toNumber, SessionGeneratorOutput actual)
+        private static void AssertAllNumbersAreGenerated(int fromNumber, int toNumber, Session actual)
         {
             for (int i = fromNumber; i <= toNumber; i++) {
                 bool exitNumber = actual.Cards.Any(x => x.Number == i);
