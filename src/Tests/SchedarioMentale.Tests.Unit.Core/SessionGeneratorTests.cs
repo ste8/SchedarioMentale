@@ -24,8 +24,9 @@ namespace SchedarioMentale.Tests.Unit.Core
             return new SessionGenerator();
         }
 
-
         [TestCase(1, 10)]
+        [TestCase(1, 100)]
+        [TestCase(21, 100)]
         public void Generate_ForValidRange_ReturnUniqueCardsInRandomOrder(int fromNumber, int toNumber)
         {
             var generator = CreateGenerator();

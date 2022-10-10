@@ -7,10 +7,13 @@
             var range = new SessionGenerationRange(fromNumber, toNumber);
             ValidateRange(range);
 
+            var random = new Random();
             var cards = new List<Card>();
 
-            for (int i = fromNumber; i <= toNumber; i++) {
-                var card = new Card(i);
+            var sequence = SequenceGenerator.Generate(fromNumber, toNumber);
+
+            foreach ( var number in sequence) {
+                var card = new Card(number);
                 cards.Add(card);
             }
 
