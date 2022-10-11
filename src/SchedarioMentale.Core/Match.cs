@@ -17,15 +17,16 @@
         public void Start()
         {
             _currentCardIndex = 0;
+            _matchTimes.Start(); //To be called before 'ShowCard'
             ShowCard();
             IsMatchRunning = true;
-            _matchTimes.Start();
         }
 
         private void ShowCard()
         {
             var card = GetCurrentCard();
             _playfieldUi.ShowCard(card);
+            _matchTimes.StartCard(card);
         }
 
         private Card GetCurrentCard()

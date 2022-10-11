@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Text;
 using SchedarioMentale.Core;
 
 namespace SchedarioMentale.WinForms
@@ -53,14 +54,35 @@ namespace SchedarioMentale.WinForms
             ShowSummaryInfoForFinishedMatch(matchSummaryInfo);
         }
 
-        private static void ShowSummaryInfoForFinishedMatch(MatchSummaryInfo matchSummaryInfo)
+        private void ShowSummaryInfoForFinishedMatch(MatchSummaryInfo matchSummaryInfo)
         {
-            var duration = matchSummaryInfo.MatchTimes.CalculateDurationForFinishedMatch();
+            var messageForCardDurations = BuildMessageForSlowestCardDurations(matchSummaryInfo.MatchTimes);
+            var totalDuration = matchSummaryInfo.MatchTimes.CalculateDurationForFinishedMatch();
             var message =
 @$"Match completato!
-Durata (secondi): {Math.Round(duration.TotalSeconds, 0, MidpointRounding.AwayFromZero)}";
+Durata (secondi): {MathHelper.Round(totalDuration.TotalSeconds, 0)}
+
+{messageForCardDurations}";
 
             MessageBox.Show(message, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private static string BuildMessageForSlowestCardDurations(IReadOnlyMatchTimes matchTimes)
+        {
+            var durations = matchTimes.GetCardDurationsBySlowestOrder();
+            return BuildMessageForCardDurations(durations);
+        }
+
+        private static string BuildMessageForCardDurations(CardDuration[] cardDurations)
+        {
+            var sb = new StringBuilder();
+            foreach (var cardDuration in cardDurations)
+            {
+                var formattedNumber = cardDuration.Card.FormattedNumber;
+                var formattedDuration = cardDuration.FormattedDurationInSeconds;
+                sb.AppendLine($"{formattedNumber}\t{formattedDuration}");
+            }
+            return sb.ToString();
         }
 
         private void FormPlayfield_KeyUp(object sender, KeyEventArgs e)

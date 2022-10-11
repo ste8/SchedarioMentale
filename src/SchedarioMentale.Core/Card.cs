@@ -8,4 +8,6 @@ public class Card
     {
         Number = number;
     }
+
+    public string FormattedNumber => Number.ToString().PadLeft(2, '0');
 }
