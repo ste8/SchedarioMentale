@@ -60,7 +60,7 @@
             this.InstructionsForNextNumberLabel.Name = "InstructionsForNextNumberLabel";
             this.InstructionsForNextNumberLabel.Size = new System.Drawing.Size(341, 38);
             this.InstructionsForNextNumberLabel.TabIndex = 2;
-            this.InstructionsForNextNumberLabel.Text = "❱❱ Premi SPAZIO per andare al prossimo numero";
+            this.InstructionsForNextNumberLabel.Text = "❱❱ Premi \'N\' per andare al prossimo numero";
             this.InstructionsForNextNumberLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // FormPlayfield

@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using SchedarioMentale.Core;
 
 namespace SchedarioMentale.WinForms
@@ -19,6 +20,11 @@ namespace SchedarioMentale.WinForms
         }
 
         private void PlayButton_Click(object sender, EventArgs e)
+        {
+            Play();
+        }
+
+        private void Play()
         {
             int fromNumber = 1;
             int toNumber = 5;
@@ -43,10 +49,12 @@ namespace SchedarioMentale.WinForms
 
         private void FormPlayfield_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Space) {
+            if (e.KeyCode == Keys.N) {
                 if (_playfield.IsMatchRunning) {
                     _playfield.GoToNextCard();
                     e.Handled = true;
+                } else {
+                    Play();
                 }
             }
         }

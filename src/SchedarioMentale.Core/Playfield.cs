@@ -1,4 +1,5 @@
-﻿namespace SchedarioMentale.Core
+﻿
+namespace SchedarioMentale.Core
 {
     public class Playfield
     {
