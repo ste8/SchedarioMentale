@@ -5,11 +5,13 @@
         private readonly Session _session;
         private readonly IPlayfieldUi _playfieldUi;
         private int _currentCardIndex;
+        private MatchTimes _matchTimes;
 
         public Match(Session session, IPlayfieldUi playfieldUi)
         {
             _session = session;
             _playfieldUi = playfieldUi;
+            _matchTimes = new MatchTimes();
         }
 
         public void Start()
@@ -17,6 +19,7 @@
             _currentCardIndex = 0;
             ShowCard();
             IsMatchRunning = true;
+            _matchTimes.Start();
         }
 
         private void ShowCard()
@@ -36,7 +39,7 @@
         {
             _currentCardIndex++;
             if (AreCardsFinished()) {
-                EndMatch();
+                MarkMatchAsFinished();
                 return;
             }
             ShowCard();
@@ -47,9 +50,12 @@
             return _currentCardIndex >= _session.Cards.Length;
         }
 
-        private void EndMatch()
+        private void MarkMatchAsFinished()
         {
             IsMatchRunning = false;
+            _matchTimes.Finish();
+            var matchSummaryInfo = new MatchSummaryInfo(_matchTimes);
+            _playfieldUi.ShowMatchAsFinished(matchSummaryInfo);
         }
 
     }

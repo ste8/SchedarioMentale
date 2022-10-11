@@ -4,5 +4,6 @@
     {
         void SetupForNewGame();
         void ShowCard(Card card);
+        void ShowMatchAsFinished(MatchSummaryInfo matchSummaryInfo);
     }
 }

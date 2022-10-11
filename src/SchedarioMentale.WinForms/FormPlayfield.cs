@@ -47,6 +47,22 @@ namespace SchedarioMentale.WinForms
             InstructionsForNextNumberLabel.Visible = true;
         }
 
+        public void ShowMatchAsFinished(MatchSummaryInfo matchSummaryInfo)
+        {
+            SetupForNewGame();
+            ShowSummaryInfoForFinishedMatch(matchSummaryInfo);
+        }
+
+        private static void ShowSummaryInfoForFinishedMatch(MatchSummaryInfo matchSummaryInfo)
+        {
+            var duration = matchSummaryInfo.MatchTimes.CalculateDurationForFinishedMatch();
+            var message =
+@$"Match completato!
+Durata (secondi): {Math.Round(duration.TotalSeconds, 0, MidpointRounding.AwayFromZero)}";
+
+            MessageBox.Show(message, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
         private void FormPlayfield_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.N) {
