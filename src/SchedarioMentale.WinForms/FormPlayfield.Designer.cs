@@ -37,18 +37,18 @@
             // 
             this.NumberLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.NumberLabel.Font = new System.Drawing.Font("Segoe UI", 100F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.NumberLabel.Location = new System.Drawing.Point(67, 47);
+            this.NumberLabel.Location = new System.Drawing.Point(50, 34);
             this.NumberLabel.Name = "NumberLabel";
-            this.NumberLabel.Size = new System.Drawing.Size(341, 224);
+            this.NumberLabel.Size = new System.Drawing.Size(400, 220);
             this.NumberLabel.TabIndex = 0;
             this.NumberLabel.Text = "100";
             this.NumberLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // PlayButton
             // 
-            this.PlayButton.Location = new System.Drawing.Point(184, 298);
+            this.PlayButton.Location = new System.Drawing.Point(200, 280);
             this.PlayButton.Name = "PlayButton";
-            this.PlayButton.Size = new System.Drawing.Size(109, 38);
+            this.PlayButton.Size = new System.Drawing.Size(100, 40);
             this.PlayButton.TabIndex = 1;
             this.PlayButton.Text = "▶️  Play";
             this.PlayButton.UseVisualStyleBackColor = true;
@@ -56,24 +56,26 @@
             // 
             // InstructionsForNextNumberLabel
             // 
-            this.InstructionsForNextNumberLabel.Location = new System.Drawing.Point(67, 298);
+            this.InstructionsForNextNumberLabel.Location = new System.Drawing.Point(50, 280);
             this.InstructionsForNextNumberLabel.Name = "InstructionsForNextNumberLabel";
-            this.InstructionsForNextNumberLabel.Size = new System.Drawing.Size(341, 38);
+            this.InstructionsForNextNumberLabel.Size = new System.Drawing.Size(400, 40);
             this.InstructionsForNextNumberLabel.TabIndex = 2;
             this.InstructionsForNextNumberLabel.Text = "❱❱ Premi \'N\' per andare al prossimo numero";
-            this.InstructionsForNextNumberLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.InstructionsForNextNumberLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FormPlayfield
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(484, 361);
             this.Controls.Add(this.PlayButton);
             this.Controls.Add(this.NumberLabel);
             this.Controls.Add(this.InstructionsForNextNumberLabel);
             this.KeyPreview = true;
             this.Name = "FormPlayfield";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Schedario Mentale";
+            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FormPlayfield_KeyUp);
             this.ResumeLayout(false);
 
